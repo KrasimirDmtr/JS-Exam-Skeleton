@@ -9,7 +9,7 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     const { email, passowrd } = req.body
 
-    await userManager.login(email, passowrd);
+   const token =  await userManager.login(email, passowrd);
 
     res.render('/')
 })
