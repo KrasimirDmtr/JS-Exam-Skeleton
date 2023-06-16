@@ -11,7 +11,7 @@ router.post('/login', async (req, res) => {
 
     await userManager.login(email, passowrd);
 
-    res.send('Logged in')
+    res.render('/')
 })
 
 router.get('/register', (req, res) => {
@@ -23,7 +23,7 @@ router.post('/register', async (req, res) => {
 
     await userManager.register({username, email, password, repeatPassword});
 
-    res.send('Registered')
+    res.render('/')
 })
 
 
