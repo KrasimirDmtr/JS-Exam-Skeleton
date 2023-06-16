@@ -5,7 +5,8 @@ exports.login = (emai,password) =>{
 };
 
 exports.register = (userData) => {
-
+    User.create(userData)
+    console.log(userData);
 };
 
 exports.logout = () => {
