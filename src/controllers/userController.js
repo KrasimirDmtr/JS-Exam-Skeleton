@@ -9,9 +9,11 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     const { email, passowrd } = req.body
 
-   const token =  await userManager.login(email, passowrd);
+    const token = await userManager.login(email, passowrd);
 
-    res.render('/')
+    res.cookie('token', token);
+
+    res.redirect('/')
 })
 
 router.get('/register', (req, res) => {
@@ -19,11 +21,11 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', async (req, res) => {
-    const { username, email, password, repeatPassword} = req.body;
+    const { username, email, password, repeatPassword } = req.body;
 
-    await userManager.register({username, email, password, repeatPassword});
+    await userManager.register({ username, email, password, repeatPassword });
 
-    res.render('/')
+    res.redirect('/users/login')
 })
 
 
