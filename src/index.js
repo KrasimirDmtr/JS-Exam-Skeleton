@@ -4,6 +4,9 @@ const path = require('path');
 const handlebars = require('express-handlebars');
 const mongoose = require('mongoose');
 const cookieparser = require('cookie-parser');
+const { auth } = require('./middlewares/authMiddleware');
+
+
 
 const app = express();
 
@@ -24,6 +27,8 @@ app.set('views', 'src/views');
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieparser());
+app.use(auth);
+
 app.use(routes);
 
 app.listen(5000);
